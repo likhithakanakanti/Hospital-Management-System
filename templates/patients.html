@@ -1,0 +1,24 @@
+{% extends 'base.html' %}
+{% block content %}
+<h2>Patients</h2>
+<form method="get">
+<input name="q" placeholder="Search patient">
+<button>Search</button>
+</form>
+<a href="/add_patient" class="btn btn-primary" style="margin-bottom:15px;">Add Patient</a>
+<table>
+<tr><th>Name</th><th>Age</th><th>Disease</th><th>Mobile</th><th>Action</th></tr>
+{% for p in patients %}
+<tr>
+<td>{{p.name}}</td>
+<td>{{p.age}}</td>
+<td>{{p.disease}}</td>
+<td>{{p.mobile}}</td>
+<td>
+<a href="/edit_patient/{{p.id}}">Edit</a>
+<a href="/delete_patient/{{p.id}}">Delete</a>
+</td>
+</tr>
+{% endfor %}
+</table>
+{% endblock %}
